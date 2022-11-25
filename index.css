@@ -1,5 +1,6 @@
 :root {
   font-family: sans-serif;
+  --gray: #ddd;
   --black: #333;
   --error: #f66;
   --alert: #f0f01a;
@@ -8,12 +9,8 @@
 form {
   padding: 16px 32px;
   display: grid;
+  gap: 4px 32px;
   grid-template-columns: repeat(3, 1fr);
-}
-
-.input-group,
-.submit-form {
-  padding: 8px;
 }
 
 .input-group {
@@ -30,22 +27,33 @@ input,
 select {
   font-size: 1rem;
   padding: 8px 16px;
+  border: 1px solid var(--gray);
+}
+
+input::placeholder {
+  opacity: 0.5;
+  color: var(--black);
+}
+
+input:focus {
+  outline: none;
   border: 1px solid var(--black);
 }
 
 .input-msg {
-  background-color: var(--error);
-  color: #fff;
+  opacity: 0;
   padding: 8px 16px;
-  height: 1rem;
+  min-height: 1rem;
   border-radius: 0 0 8px 8px;
 }
 
 .input-msg.error {
+  opacity: 1;
   background-color: var(--error);
   color: #fff;
 }
 .input-msg.alert {
+  opacity: 1;
   background-color: var(--alert);
   color: var(--black);
 }
@@ -59,7 +67,6 @@ select {
   font-weight: bold;
   cursor: pointer;
   padding: 8px 32px;
-  border-radius: 8px;
   border: none;
   background-color: #0a0;
   color: #fff;

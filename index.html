@@ -17,6 +17,9 @@
           name="first-name"
           id="first-name"
           placeholder="Diego"
+          pattern="[A-Za-z ,.'-]+"
+          maxlength="50"
+          required
         />
         <div class="input-msg"></div>
       </div>
@@ -27,6 +30,9 @@
           name="last-name"
           id="last-name"
           placeholder="Moreira de Oliveira"
+          pattern="[A-Za-z ,.'-]+"
+          maxlength="50"
+          required
         />
         <div class="input-msg"></div>
       </div>
@@ -37,6 +43,7 @@
           name="e-mail"
           id="e-mail"
           placeholder="diego@gmail.com"
+          pattern="[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$"
         />
         <div class="input-msg"></div>
       </div>
