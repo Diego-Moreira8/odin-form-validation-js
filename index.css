@@ -1,3 +1,66 @@
 :root {
   font-family: sans-serif;
+  --black: #333;
+  --error: #f66;
+  --alert: #f0f01a;
+}
+
+form {
+  padding: 16px 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.input-group,
+.submit-form {
+  padding: 8px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  padding: 4px 0;
+  color: var(--black);
+}
+
+input,
+select {
+  font-size: 1rem;
+  padding: 8px 16px;
+  border: 1px solid var(--black);
+}
+
+.input-msg {
+  background-color: var(--error);
+  color: #fff;
+  padding: 8px 16px;
+  height: 1rem;
+  border-radius: 0 0 8px 8px;
+}
+
+.input-msg.error {
+  background-color: var(--error);
+  color: #fff;
+}
+.input-msg.alert {
+  background-color: var(--alert);
+  color: var(--black);
+}
+
+.submit-form {
+  grid-column: 1 / -1;
+}
+
+.submit-form button {
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 8px 32px;
+  border-radius: 8px;
+  border: none;
+  background-color: #0a0;
+  color: #fff;
 }
