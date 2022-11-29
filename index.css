@@ -3,7 +3,6 @@
   --gray: #ddd;
   --black: #333;
   --error: #f66;
-  --alert: #f0f01a;
 }
 
 form {
@@ -24,8 +23,8 @@ label {
 }
 
 .required {
-  font-size: 0.5rem;
-  color: #555;
+  font-size: 0.75rem;
+  color: #aaa;
   font-style: italic;
 }
 
@@ -57,8 +56,9 @@ input:invalid {
 
 .input-msg {
   opacity: 0;
+  font-size: 0.75rem;
   padding: 8px 16px;
-  height: 1rem;
+  height: 0.75rem;
   border-radius: 0 0 8px 8px;
 }
 
@@ -67,11 +67,6 @@ input:invalid {
   height: fit-content;
   background-color: var(--error);
   color: #fff;
-}
-.input-msg.alert {
-  opacity: 1;
-  background-color: var(--alert);
-  color: var(--black);
 }
 
 .submit-form {
