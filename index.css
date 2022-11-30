@@ -119,6 +119,15 @@ input:placeholder-shown {
   border: none;
   background-color: #0a0;
   color: #fff;
+  transition: all 100ms;
+}
+
+.submit-form button:hover {
+  background-color: #0c0;
+}
+
+.submit-form button:active {
+  transform: scale(0.95);
 }
 
 footer {
@@ -127,13 +136,18 @@ footer {
 
 @media (max-width: 800px) {
   main {
-    width: 100%;
-    margin: 0;
+    width: 95%;
+    margin: 32px 0;
     padding: 32px;
   }
 
   form {
     grid-template-columns: 1fr;
     padding: 0;
+  }
+
+  .submit-form button {
+    width: 100%;
+    margin-top: 16px;
   }
 }
