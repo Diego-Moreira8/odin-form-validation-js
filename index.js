@@ -1,3 +1,5 @@
+// form
+const form = document.querySelector("form");
 // Inputs
 const fName = document.querySelector("#first-name");
 const lName = document.querySelector("#last-name");
@@ -34,16 +36,20 @@ function removeErrorMsg(input) {
   input.setCustomValidity("");
 }
 
+function checkRepeatPassword() {
+  if (password.value !== passwordCheck.value) {
+    showErrorMsg(passwordCheck, "As senhas estão diferentes!");
+  } else {
+    removeErrorMsg(passwordCheck);
+  }
+}
+
 // Choose message to appear on #input-msg
 function chooseMessage(e) {
   const input = e.target;
   // Special condition for the passwordCheck and bikeBrand
-  if (input.id === "password-check") {
-    if (input.value !== password.value) {
-      showErrorMsg(input, "As senhas estão diferentes!");
-    } else {
-      removeErrorMsg(input);
-    }
+  if (input.id === "password-check" || input.id === "password") {
+    checkRepeatPassword();
   } else if (input.id === "bike-brand") {
     if (input.value === "") {
       showErrorMsg(input, "É necessário escolher a marca!");
@@ -90,6 +96,7 @@ function chooseMessage(e) {
             input,
             `Senha não permitida. Deve conter de 8 a 10 caracteres.`
           );
+          checkRepeatPassword();
           break;
       }
     } else {
@@ -101,3 +108,10 @@ function chooseMessage(e) {
 allInputs.forEach((input) => {
   input.addEventListener("input", chooseMessage);
 });
+
+function checkForm(e) {
+  e.preventDefault();
+  console.log(form.checkValidity());
+}
+
+form.addEventListener("submit", checkForm);
