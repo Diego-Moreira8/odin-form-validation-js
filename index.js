@@ -111,8 +111,10 @@ allInputs.forEach((input) => {
 });
 
 function checkForm(e) {
-  e.preventDefault();
-  console.log(form.checkValidity());
+  if (!form.checkValidity()) {
+    e.preventDefault();
+    form.reportValidity();
+  }
 }
 
 form.addEventListener("submit", checkForm);

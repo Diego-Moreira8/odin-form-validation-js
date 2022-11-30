@@ -9,7 +9,12 @@
   </head>
   <body>
     <h1>Formulário qualquer:</h1>
-    <form novalidate>
+    <form
+      novalidate
+      action="https://jkorpela.fi/cgi-bin/echo.cgi"
+      method="POST"
+    >
+      <!-- Thanks to https://jkorpela.fi/forms/testing.html -->
       <div class="input-group">
         <label for="first-name"
           >Nome: <span class="required">(Obrigatório)</span></label
