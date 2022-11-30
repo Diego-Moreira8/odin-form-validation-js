@@ -48,8 +48,15 @@ function checkRepeatPassword() {
 // Choose message to appear on #input-msg
 function chooseMessage(e) {
   const input = e.target;
-  // Special condition for the passwordCheck and bikeBrand
-  if (input.id === "password-check" || input.id === "password") {
+  // Special condition for the password, passwordCheck and bikeBrand
+  if (input.id === "password" && input.validity.patternMismatch) {
+    showErrorMsg(
+      input,
+      `Senha não permitida. Deve conter de 8 a 10 caracteres.`
+    );
+    checkRepeatPassword();
+  }
+  if (input.id === "password-check") {
     checkRepeatPassword();
   } else if (input.id === "bike-brand") {
     if (input.value === "") {
@@ -92,14 +99,9 @@ function chooseMessage(e) {
             `CEP inválido, favor verificar! Deve conter 8 dígitos, apenas números.`
           );
           break;
-        case "password":
-          showErrorMsg(
-            input,
-            `Senha não permitida. Deve conter de 8 a 10 caracteres.`
-          );
-          checkRepeatPassword();
-          break;
       }
+    } else if (input.validity.valueMissing) {
+      showErrorMsg(input, "Este campo não pode estar vazio!");
     } else {
       removeErrorMsg(input);
     }
