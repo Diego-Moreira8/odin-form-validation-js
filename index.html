@@ -4,145 +4,148 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./reset.css" />
     <link rel="stylesheet" href="./index.css" />
     <title>form</title>
   </head>
   <body>
-    <h1>Formulário qualquer:</h1>
-    <form
-      novalidate
-      action="https://jkorpela.fi/cgi-bin/echo.cgi"
-      method="POST"
-    >
-      <!-- Thanks to https://jkorpela.fi/forms/testing.html -->
-      <div class="input-group">
-        <label for="first-name"
-          >Nome: <span class="required">(Obrigatório)</span></label
-        >
-        <input
-          type="text"
-          name="first-name"
-          id="first-name"
-          placeholder="Diego"
-          pattern="[A-Za-z ,.'-]+"
-          maxlength="50"
-          required
-        />
-        <div class="input-msg"></div>
-      </div>
-      <div class="input-group">
-        <label for="last-name"
-          >Sobrenome: <span class="required">(Obrigatório)</span></label
-        >
-        <input
-          type="text"
-          name="last-name"
-          id="last-name"
-          placeholder="Moreira de Oliveira"
-          pattern="[A-Za-z ,.'-]+"
-          maxlength="50"
-          required
-        />
-        <div class="input-msg"></div>
-      </div>
-      <div class="input-group">
-        <label for="e-mail"
-          >E-mail: <span class="required">(Obrigatório)</span></label
-        >
-        <input
-          type="email"
-          name="e-mail"
-          id="e-mail"
-          placeholder="diego@gmail.com"
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-          required
-        />
-        <div class="input-msg"></div>
-      </div>
-      <div class="input-group">
-        <label for="phone"
-          >Telefone: <span class="required">(Obrigatório)</span></label
-        >
-        <input
-          type="text"
-          name="phone"
-          id="phone"
-          placeholder="11998765432"
-          pattern="[0-9]{11}"
-          maxlength="11"
-          minlength="11"
-          required
-        />
-        <div class="input-msg"></div>
-      </div>
-      <div class="input-group">
-        <label for="cep"
-          >CEP: <span class="required">(Obrigatório)</span></label
-        >
-        <input
-          type="text"
-          name="cep"
-          id="cep"
-          placeholder="76543210"
-          pattern="[0-9]{8}"
-          maxlength="8"
-          minlength="8"
-          required
-        />
-        <div class="input-msg"></div>
-      </div>
-      <div class="input-group">
-        <label for="password"
-          >Senha: <span class="required">(Obrigatório)</span></label
-        >
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder=" "
-          pattern="[a-zA-Z0-9]{8,10}"
-          minlength="8"
-          maxlength="10"
-          required
-        />
-        <!-- Empty placeholder for the input:placeholder-shown to work -->
-        <div class="input-msg"></div>
-      </div>
-      <div class="input-group">
-        <label for="password-check"
-          >Repita a senha: <span class="required">(Obrigatório)</span></label
-        >
-        <input
-          type="password"
-          name="password-check"
-          id="password-check"
-          placeholder=" "
-          required
-        />
-        <!-- Empty placeholder for the input:placeholder-shown to work -->
-        <div class="input-msg"></div>
-      </div>
-      <div class="input-group">
-        <label for="bike-brand"
-          >Fabricante da moto:
-          <span class="required">(Obrigatório)</span></label
-        >
-        <select name="bike-brand" id="bike-brand" required>
-          <option value="" disabled selected hidden>
-            --Escolha uma opção--
-          </option>
-          <option value="ducati">Ducati</option>
-          <option value="honda">Honda</option>
-          <option value="kawasaki">Kawasaki</option>
-          <option value="ktm">KTM</option>
-          <option value="yamaha">Yamaha</option>
-        </select>
-        <div class="input-msg"></div>
-      </div>
-      <div class="submit-form">
-        <button type="submit">Enviar</button>
-      </div>
-    </form>
+    <main>
+      <h1>Formulário qualquer:</h1>
+      <form
+        novalidate
+        action="https://jkorpela.fi/cgi-bin/echo.cgi"
+        method="POST"
+      >
+        <!-- Thanks to https://jkorpela.fi/forms/testing.html -->
+        <div class="input-group">
+          <label for="first-name"
+            >Nome: <span class="required">(Obrigatório)</span></label
+          >
+          <input
+            type="text"
+            name="first-name"
+            id="first-name"
+            placeholder="Diego"
+            pattern="[A-Za-z ,.'-]+"
+            maxlength="50"
+            required
+          />
+          <div class="input-msg"></div>
+        </div>
+        <div class="input-group">
+          <label for="last-name"
+            >Sobrenome: <span class="required">(Obrigatório)</span></label
+          >
+          <input
+            type="text"
+            name="last-name"
+            id="last-name"
+            placeholder="Moreira de Oliveira"
+            pattern="[A-Za-z ,.'-]+"
+            maxlength="50"
+            required
+          />
+          <div class="input-msg"></div>
+        </div>
+        <div class="input-group">
+          <label for="e-mail"
+            >E-mail: <span class="required">(Obrigatório)</span></label
+          >
+          <input
+            type="email"
+            name="e-mail"
+            id="e-mail"
+            placeholder="diego@gmail.com"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            required
+          />
+          <div class="input-msg"></div>
+        </div>
+        <div class="input-group">
+          <label for="phone"
+            >Telefone: <span class="required">(Obrigatório)</span></label
+          >
+          <input
+            type="text"
+            name="phone"
+            id="phone"
+            placeholder="11998765432"
+            pattern="[0-9]{11}"
+            maxlength="11"
+            minlength="11"
+            required
+          />
+          <div class="input-msg"></div>
+        </div>
+        <div class="input-group">
+          <label for="cep"
+            >CEP: <span class="required">(Obrigatório)</span></label
+          >
+          <input
+            type="text"
+            name="cep"
+            id="cep"
+            placeholder="76543210"
+            pattern="[0-9]{8}"
+            maxlength="8"
+            minlength="8"
+            required
+          />
+          <div class="input-msg"></div>
+        </div>
+        <div class="input-group">
+          <label for="password"
+            >Senha: <span class="required">(Obrigatório)</span></label
+          >
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder=" "
+            pattern="[a-zA-Z0-9]{8,10}"
+            minlength="8"
+            maxlength="10"
+            required
+          />
+          <!-- Empty placeholder for the input:placeholder-shown to work -->
+          <div class="input-msg"></div>
+        </div>
+        <div class="input-group">
+          <label for="password-check"
+            >Repita a senha: <span class="required">(Obrigatório)</span></label
+          >
+          <input
+            type="password"
+            name="password-check"
+            id="password-check"
+            placeholder=" "
+            required
+          />
+          <!-- Empty placeholder for the input:placeholder-shown to work -->
+          <div class="input-msg"></div>
+        </div>
+        <div class="input-group">
+          <label for="bike-brand"
+            >Fabricante da moto:
+            <span class="required">(Obrigatório)</span></label
+          >
+          <select name="bike-brand" id="bike-brand" required>
+            <option value="" disabled selected hidden>
+              --Escolha uma opção--
+            </option>
+            <option value="ducati">Ducati</option>
+            <option value="honda">Honda</option>
+            <option value="kawasaki">Kawasaki</option>
+            <option value="ktm">KTM</option>
+            <option value="yamaha">Yamaha</option>
+          </select>
+          <div class="input-msg"></div>
+        </div>
+        <div class="submit-form">
+          <button type="submit">Enviar</button>
+        </div>
+      </form>
+    </main>
     <script src="./index.js"></script>
   </body>
 </html>
