@@ -47,11 +47,17 @@ input:focus {
 
 input:valid {
   border: 1px solid #0a0;
-  background-color: rgba(0, 170, 0, 0.1);
+  background-color: rgba(0, 170, 0, 0.025);
 }
 
 input:invalid {
   border: 1px solid var(--error);
+  background-color: rgba(170, 0, 0, 0.025);
+}
+
+input:placeholder-shown {
+  border: 1px solid var(--black);
+  background-color: #fff;
 }
 
 .input-msg {
