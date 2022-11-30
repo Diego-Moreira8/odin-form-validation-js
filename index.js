@@ -36,6 +36,7 @@ function removeErrorMsg(input) {
   input.setCustomValidity("");
 }
 
+// Called on input change in password and password-check
 function checkRepeatPassword() {
   if (password.value !== passwordCheck.value) {
     showErrorMsg(passwordCheck, "As senhas estão diferentes!");
