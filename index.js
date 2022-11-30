@@ -1,3 +1,7 @@
+import myFooter from "./my-footer.js";
+
+myFooter("#000", "#fff");
+
 // form
 const form = document.querySelector("form");
 // Inputs
