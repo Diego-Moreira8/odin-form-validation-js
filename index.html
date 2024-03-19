@@ -3,10 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Validação de Formulários com JS!</title>
   </head>
   <body>
-    <form novalidate></form>
+    <form novalidate>
+      <div>
+        <label for="name">Primeiro nome:</label>
+        <input type="text" name="name" id="name" required />
+        <span class="error" aria-live="polite"></span>
+      </div>
+
+      <div>
+        <label for="mail">E-mail:</label>
+        <input type="email" name="mail" id="mail" required />
+        <span class="error" aria-live="polite"></span>
+      </div>
+
+      <div>
+        <label for="phone">DDD + celular (apenas números):</label>
+        <input type="text" name="phone" id="phone" required />
+        <span class="error" aria-live="polite"></span>
+      </div>
+
+      <div>
+        <button type="reset">Limpar</button>
+        <button type="submit">Enviar!</button>
+      </div>
+
+      <span class="form-error"></span>
+    </form>
 
     <script src="./index.js"></script>
   </body>
