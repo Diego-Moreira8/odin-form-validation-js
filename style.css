@@ -5,3 +5,7 @@ input:valid {
 input:invalid {
   background-color: lightcoral;
 }
+
+.pass {
+  color: green;
+}

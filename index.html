@@ -9,20 +9,65 @@
   <body>
     <form novalidate>
       <div>
-        <label for="name">Primeiro nome:</label>
-        <input type="text" name="name" id="name" required />
+        <label for="name">Nome completo:</label>
+        <input type="text" name="name" id="name" required autocomplete="name" />
         <span class="error" aria-live="polite"></span>
       </div>
 
       <div>
         <label for="mail">E-mail:</label>
-        <input type="email" name="mail" id="mail" required />
+        <input
+          type="email"
+          name="mail"
+          id="mail"
+          required
+          autocomplete="email"
+        />
         <span class="error" aria-live="polite"></span>
       </div>
 
       <div>
         <label for="phone">DDD + celular (apenas números):</label>
-        <input type="text" name="phone" id="phone" required />
+        <input
+          type="text"
+          name="phone"
+          id="phone"
+          required
+          autocomplete="mobile"
+        />
+        <span class="error" aria-live="polite"></span>
+      </div>
+
+      <div>
+        <label for="password">Crie uma senha:</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          minlength="8"
+          required
+        />
+        <p>Precisa ter:</p>
+        <ul class="password-rules">
+          <li id="minimum-characters">Mínimo de 8 caracteres</li>
+          <li id="contains-number">Pelo menos um número</li>
+          <li id="contains-uppercase">Pelo menos uma letra maiúscula</li>
+          <li id="contains-lowercase">Pelo menos uma letra minúscula</li>
+          <li id="contains-special-character">
+            Pelo menos um caractere especial
+          </li>
+          <li id="no-whitespace">Não pode ter espaços em branco</li>
+        </ul>
+      </div>
+
+      <div>
+        <label for="password-check">Crie uma senha:</label>
+        <input
+          type="password"
+          name="passwordCheck"
+          id="password-check"
+          required
+        />
         <span class="error" aria-live="polite"></span>
       </div>
 

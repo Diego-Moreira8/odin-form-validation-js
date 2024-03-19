@@ -13,6 +13,13 @@ window.onload = function () {
   const phoneInput = document.querySelector("input#phone");
   const phoneErrorSpan = document.querySelector("#phone + span.error");
 
+  const passwordInput = document.querySelector("input#password");
+
+  const passwordCheckInput = document.querySelector("input#password-check");
+  const passwordCheckErrorSpan = document.querySelector(
+    "#password-check + span.error"
+  );
+
   nameInput.addEventListener("input", () => {
     if (nameInput.validity.valid) {
       nameErrorSpan.textContent = "";
@@ -54,6 +61,35 @@ window.onload = function () {
     }
   });
 
+  passwordInput.addEventListener("input", () => {
+    const passwordRegex =
+      /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{":;'?/>.<,])(?=.{8,})\S+$/;
+    const passwordPass = passwordRegex.test(passwordInput.value);
+    const classAndRegex = {
+      "minimum-characters": /.{8,}/,
+      "contains-number": /.*[0-9]/,
+      "contains-uppercase": /.*[A-Z]/,
+      "contains-lowercase": /.*[a-z]/,
+      "contains-special-character": /.*[!@#$%^&*()_+}{":;'?/>.<,]/,
+      "no-whitespace": /^\S*$/,
+    };
+    const passwordRules = document.querySelectorAll("ul.password-rules > li");
+
+    passwordInput.setCustomValidity(
+      passwordPass ? "" : "A senha não atende aos requisitos"
+    );
+
+    // Add a "pass" class for each li that has a passed password rule
+    passwordRules.forEach((li) => {
+      const passwordPass = classAndRegex[li.id].test(passwordInput.value);
+      li.classList[passwordPass ? "add" : "remove"]("pass");
+    });
+
+    checkPasswordMatch();
+  });
+
+  passwordCheckInput.addEventListener("input", checkPasswordMatch);
+
   form.addEventListener("submit", (e) => {
     if (!form.checkValidity()) {
       e.preventDefault();
@@ -94,5 +130,15 @@ window.onload = function () {
     }
 
     phoneInput.value = formattedPhoneNumber;
+  }
+
+  function checkPasswordMatch() {
+    const CUSTOM_ERROR =
+      passwordInput.value === passwordCheckInput.value
+        ? ""
+        : "As senhas são diferentes";
+
+    passwordCheckInput.setCustomValidity(CUSTOM_ERROR);
+    passwordCheckErrorSpan.textContent = CUSTOM_ERROR;
   }
 };
