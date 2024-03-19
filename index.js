@@ -14,10 +14,12 @@ window.onload = function () {
   const phoneErrorSpan = document.querySelector("#phone + span.error");
 
   const passwordInput = document.querySelector("input#password");
+  const showPasswordBtn = document.querySelector("#show-password");
 
   const passwordCheckInput = document.querySelector("input#password-check");
+  const showPasswordCheckBtn = document.querySelector("#show-password-check");
   const passwordCheckErrorSpan = document.querySelector(
-    "#password-check + span.error"
+    ".error.password-check"
   );
 
   nameInput.addEventListener("input", () => {
@@ -89,6 +91,13 @@ window.onload = function () {
   });
 
   passwordCheckInput.addEventListener("input", checkPasswordMatch);
+
+  [showPasswordBtn, showPasswordCheckBtn].forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const input = btn.parentElement.querySelector("input");
+      input.type = input.type === "password" ? "text" : "password";
+    });
+  });
 
   form.addEventListener("submit", (e) => {
     if (!form.checkValidity()) {
