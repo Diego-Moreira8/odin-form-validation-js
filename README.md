@@ -1,6 +1,6 @@
 # Validação de Formulários com JavaScript
 
-Este é um pequeno projeto proposto pelo site [The Odin Project](https://www.theodinproject.com/) para prática de validação de formulários com JavaScript, usando a [API de validação de restrição](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#validating_forms_using_javascript).
+Este é um pequeno projeto proposto pelo site [The Odin Project](https://www.theodinproject.com/) para prática de validação de formulários com JavaScript, usando a [API de validação de restrição](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#validating_forms_using_javascript). Confira o projeto em [diego-moreira8.github.io/odin-form-validation-js](https://diego-moreira8.github.io/odin-form-validation-js/)
 
 ![Captura de tela do projeto](./project-screenshot.png)
 
