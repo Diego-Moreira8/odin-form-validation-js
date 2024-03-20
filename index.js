@@ -14,32 +14,14 @@ const passwordCheckInput = document.querySelector("input#password-check");
 const showPasswordCheckBtn = document.querySelector("#show-password-check");
 const passwordCheckErrorSpan = document.querySelector(".error.password-check");
 
-function validateName() {
-  if (nameInput.validity.valid) {
-    nameErrorSpan.textContent = "";
-  } else {
-    if (nameInput.validity.valueMissing) {
-      nameErrorSpan.textContent = REQUIRED_ERROR_MSG;
-    }
-  }
-}
+function formatPhoneNumber(phoneNumber) {
+  // Converts a string of numbers to a brazillian phone format:
+  // (11) 98765-4321
 
-function validateEmail() {
-  if (mailInput.validity.valid) {
-    mailErrorSpan.textContent = "";
-  } else {
-    if (mailInput.validity.valueMissing) {
-      mailErrorSpan.textContent = REQUIRED_ERROR_MSG;
-    } else if (mailInput.validity.typeMismatch) {
-      mailErrorSpan.textContent = "Formato de e-mail incorreto";
-    }
-  }
-}
-
-function formatPhoneNumber() {
-  // Removes any NaN character
-  let phoneNumber = phoneInput.value.replace(/\D/g, "");
   let formattedPhoneNumber;
+
+  // Removes any NaN character
+  phoneNumber = phoneNumber.replace(/\D/g, "");
 
   if (phoneNumber.length > 11) {
     phoneNumber = phoneNumber.slice(0, 11);
@@ -59,37 +41,24 @@ function formatPhoneNumber() {
     formattedPhoneNumber = phoneNumber;
   }
 
-  phoneInput.value = formattedPhoneNumber;
+  return formattedPhoneNumber;
 }
 
-function validatePhone() {
-  const PHONE_ERROR_MSG = "O telefone precisa ter 11 dígitos";
+function showErrorMessage(input, errorsAndMessages) {
+  const errorSpan = input.parentElement.querySelector(".error");
 
-  formatPhoneNumber();
-
-  phoneInput.setCustomValidity(
-    phoneInput.value.length !== 15 ? PHONE_ERROR_MSG : ""
-  );
-
-  if (phoneInput.validity.valid) {
-    phoneErrorSpan.textContent = "";
+  if (input.validity.valid) {
+    errorSpan.textContent = "";
   } else {
-    if (phoneInput.validity.valueMissing) {
-      phoneErrorSpan.textContent = REQUIRED_ERROR_MSG;
-    } else if (phoneInput.validity.customError) {
-      phoneErrorSpan.textContent = PHONE_ERROR_MSG;
+    for (let validation in input.validity) {
+      if (validation === "valid") continue;
+
+      if (input.validity[validation]) {
+        errorSpan.textContent = errorsAndMessages[validation];
+        break;
+      }
     }
   }
-}
-
-function checkPasswordMatch() {
-  const CUSTOM_ERROR =
-    passwordInput.value === passwordCheckInput.value
-      ? ""
-      : "As senhas são diferentes";
-
-  passwordCheckInput.setCustomValidity(CUSTOM_ERROR);
-  passwordCheckErrorSpan.textContent = CUSTOM_ERROR;
 }
 
 function togglePasswordRules() {
@@ -110,6 +79,37 @@ function togglePasswordRules() {
   });
 }
 
+function showPassword(btn) {
+  const input = btn.parentElement.querySelector("input");
+  input.type = input.type === "password" ? "text" : "password";
+}
+
+function validateName() {
+  showErrorMessage(nameInput, { valueMissing: REQUIRED_ERROR_MSG });
+}
+
+function validateEmail() {
+  showErrorMessage(mailInput, {
+    valueMissing: REQUIRED_ERROR_MSG,
+    typeMismatch: "Formato de e-mail incorreto",
+  });
+}
+
+function validatePhone() {
+  const PHONE_ERROR_MSG = "O telefone precisa ter 11 dígitos";
+
+  phoneInput.value = formatPhoneNumber(phoneInput.value);
+
+  phoneInput.setCustomValidity(
+    phoneInput.value.length === 15 ? "" : PHONE_ERROR_MSG
+  );
+
+  showErrorMessage(phoneInput, {
+    valueMissing: REQUIRED_ERROR_MSG,
+    customError: PHONE_ERROR_MSG,
+  });
+}
+
 function validatePassword() {
   const passwordRegex =
     /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{":;'?/>.<,])(?=.{8,})\S+$/;
@@ -119,13 +119,18 @@ function validatePassword() {
     passwordPass ? "" : "A senha não atende aos requisitos"
   );
 
+  // No need to show error messages, rules list it's enough
+
   togglePasswordRules();
-  checkPasswordMatch();
+  validatePasswordMatch();
 }
 
-function showPassword(btn) {
-  const input = btn.parentElement.querySelector("input");
-  input.type = input.type === "password" ? "text" : "password";
+function validatePasswordMatch() {
+  const match = passwordInput.value === passwordCheckInput.value;
+  const CUSTOM_ERROR = match ? "" : "As senhas são diferentes";
+
+  passwordCheckInput.setCustomValidity(CUSTOM_ERROR);
+  passwordCheckErrorSpan.textContent = CUSTOM_ERROR;
 }
 
 function handleReset() {
@@ -147,7 +152,7 @@ function addEventListeners() {
   mailInput.addEventListener("input", validateEmail);
   phoneInput.addEventListener("input", validatePhone);
   passwordInput.addEventListener("input", validatePassword);
-  passwordCheckInput.addEventListener("input", checkPasswordMatch);
+  passwordCheckInput.addEventListener("input", validatePasswordMatch);
 
   [showPasswordBtn, showPasswordCheckBtn].forEach((btn) => {
     btn.addEventListener("click", () => showPassword(btn));
