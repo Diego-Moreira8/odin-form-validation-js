@@ -137,7 +137,8 @@ function handleReset() {
 function validateForm(event) {
   if (!form.checkValidity()) {
     event.preventDefault();
-    formErrorSpan.textContent = "Há erros no formulário";
+    formErrorSpan.textContent =
+      "Há erros no formulário. Verifique os campos e tente novamente.";
   }
 }
 

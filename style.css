@@ -1,3 +1,8 @@
+:root {
+  --ok: #90ee90;
+  --danger: #f1b7b7;
+}
+
 body {
   font-family: Consolas, monospace;
   background-color: #222;
@@ -28,11 +33,11 @@ input {
 }
 
 input:valid {
-  background-color: #90ee90;
+  background-color: var(--ok);
 }
 
 input:invalid {
-  background-color: #f1b7b7;
+  background-color: var(--danger);
 }
 
 button {
@@ -51,9 +56,10 @@ input {
 /* Specifics */
 
 .form-row {
+  position: relative;
   display: flex;
   flex-flow: column;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .form-buttons {
@@ -66,14 +72,24 @@ input {
   display: block;
 }
 
+.form-error {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  padding: 0.5rem;
+}
+
 span.error {
-  padding-top: 0.25rem;
-  color: #f1b7b7;
+  position: absolute;
+  top: 3.5rem;
+  color: var(--danger);
 }
 
 .input-wrap {
   display: grid;
   grid-template-columns: 1fr 3rem;
+  gap: 2px; /* For the outline */
 }
 
 button#show-password,
@@ -82,7 +98,7 @@ button#show-password-check {
 }
 
 .form-row p {
-  margin: 0;
+  margin: 0.5rem 0;
 }
 
 ul {
@@ -90,5 +106,5 @@ ul {
 }
 
 .pass {
-  color: #90ee90;
+  color: var(--ok);
 }
