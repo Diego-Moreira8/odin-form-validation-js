@@ -7,14 +7,29 @@
     <title>Validação de Formulários com JS!</title>
   </head>
   <body>
+    <h1>O Formulário</h1>
+
+    <p>
+      Este é um projeto proposto pelo site
+      <a href="https://www.theodinproject.com/" target="_blank"
+        >The Odin Project</a
+      >
+      para prática de formulários gerenciados via JavaScript.
+      <br />
+      Confira este e outros projetos
+      <a href="https://diegomoreira.vercel.app/" target="_blank"
+        >no meu portfolio</a
+      >!
+    </p>
+
     <form novalidate>
-      <div>
+      <div class="form-row">
         <label for="name">Nome completo:</label>
         <input type="text" name="name" id="name" required autocomplete="name" />
         <span class="error" aria-live="polite"></span>
       </div>
 
-      <div>
+      <div class="form-row">
         <label for="mail">E-mail:</label>
         <input
           type="email"
@@ -26,7 +41,7 @@
         <span class="error" aria-live="polite"></span>
       </div>
 
-      <div>
+      <div class="form-row">
         <label for="phone">DDD + celular (apenas números):</label>
         <input
           type="text"
@@ -38,16 +53,24 @@
         <span class="error" aria-live="polite"></span>
       </div>
 
-      <div>
+      <div class="form-row">
         <label for="password">Crie uma senha:</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          minlength="8"
-          required
-        />
-        <button type="button" id="show-password">👀</button>
+        <div class="input-wrap">
+          <input
+            type="password"
+            name="password"
+            id="password"
+            minlength="8"
+            required
+          />
+          <button
+            type="button"
+            id="show-password"
+            title="Mostrar/ocultar senha"
+          >
+            👀
+          </button>
+        </div>
         <p>Precisa ter:</p>
         <ul class="password-rules">
           <li id="minimum-characters">Mínimo de 8 caracteres</li>
@@ -61,19 +84,27 @@
         </ul>
       </div>
 
-      <div>
+      <div class="form-row">
         <label for="password-check">Crie uma senha:</label>
-        <input
-          type="password"
-          name="passwordCheck"
-          id="password-check"
-          required
-        />
-        <button type="button" id="show-password-check">👀</button>
+        <div class="input-wrap">
+          <input
+            type="password"
+            name="passwordCheck"
+            id="password-check"
+            required
+          />
+          <button
+            type="button"
+            id="show-password-check"
+            title="Mostrar/ocultar senha"
+          >
+            👀
+          </button>
+        </div>
         <span class="error password-check" aria-live="polite"></span>
       </div>
 
-      <div>
+      <div class="form-buttons">
         <button type="reset">Limpar</button>
         <button type="submit">Enviar!</button>
       </div>

@@ -1,11 +1,94 @@
+body {
+  font-family: Consolas, monospace;
+  background-color: #222;
+  color: #fff;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  margin-bottom: 2rem;
+}
+
+a {
+  color: aqua;
+}
+
+button,
+input {
+  font-family: inherit;
+  font-size: 1rem;
+  border: 2px solid grey;
+  border-radius: 4px;
+}
+
 input:valid {
-  background-color: lightgreen;
+  background-color: #90ee90;
 }
 
 input:invalid {
-  background-color: lightcoral;
+  background-color: #f1b7b7;
+}
+
+button {
+  padding: 0.5rem 1rem;
+}
+
+label {
+  padding-bottom: 0.25rem;
+}
+
+input {
+  padding: 4px;
+  border: 2px solid grey;
+}
+
+/* Specifics */
+
+.form-row {
+  display: flex;
+  flex-flow: column;
+  margin-bottom: 2rem;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.form-buttons button {
+  display: block;
+}
+
+span.error {
+  padding-top: 0.25rem;
+  color: #f1b7b7;
+}
+
+.input-wrap {
+  display: grid;
+  grid-template-columns: 1fr 3rem;
+}
+
+button#show-password,
+button#show-password-check {
+  padding: 0;
+}
+
+.form-row p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
 }
 
 .pass {
-  color: green;
+  color: #90ee90;
 }
