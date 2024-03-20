@@ -92,10 +92,9 @@ function checkPasswordMatch() {
   passwordCheckErrorSpan.textContent = CUSTOM_ERROR;
 }
 
-function validatePassword() {
-  const passwordRegex =
-    /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{":;'?/>.<,])(?=.{8,})\S+$/;
-  const passwordPass = passwordRegex.test(passwordInput.value);
+function togglePasswordRules() {
+  // Add a "pass" class for each li that has a passed password rule
+  const passwordRules = document.querySelectorAll("ul.password-rules > li");
   const classAndRegex = {
     "minimum-characters": /.{8,}/,
     "contains-number": /.*[0-9]/,
@@ -104,24 +103,35 @@ function validatePassword() {
     "contains-special-character": /.*[!@#$%^&*()_+}{":;'?/>.<,]/,
     "no-whitespace": /^\S*$/,
   };
-  const passwordRules = document.querySelectorAll("ul.password-rules > li");
+
+  passwordRules.forEach((li) => {
+    const rulePass = classAndRegex[li.id].test(passwordInput.value);
+    li.classList[rulePass ? "add" : "remove"]("pass");
+  });
+}
+
+function validatePassword() {
+  const passwordRegex =
+    /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{":;'?/>.<,])(?=.{8,})\S+$/;
+  const passwordPass = passwordRegex.test(passwordInput.value);
 
   passwordInput.setCustomValidity(
     passwordPass ? "" : "A senha não atende aos requisitos"
   );
 
-  // Add a "pass" class for each li that has a passed password rule
-  passwordRules.forEach((li) => {
-    const rulePass = classAndRegex[li.id].test(passwordInput.value);
-    li.classList[rulePass ? "add" : "remove"]("pass");
-  });
-
+  togglePasswordRules();
   checkPasswordMatch();
 }
 
 function showPassword(btn) {
   const input = btn.parentElement.querySelector("input");
   input.type = input.type === "password" ? "text" : "password";
+}
+
+function handleReset() {
+  // reset event only clear inputs after the function
+  passwordInput.value = "";
+  togglePasswordRules();
 }
 
 function validateForm(event) {
@@ -142,6 +152,7 @@ function addEventListeners() {
     btn.addEventListener("click", () => showPassword(btn));
   });
 
+  form.addEventListener("reset", handleReset);
   form.addEventListener("submit", validateForm);
 }
 
