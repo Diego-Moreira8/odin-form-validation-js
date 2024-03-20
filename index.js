@@ -28,7 +28,7 @@ function validateEmail() {
   if (mailInput.validity.valid) {
     mailErrorSpan.textContent = "";
   } else {
-    if (nameInput.validity.valueMissing) {
+    if (mailInput.validity.valueMissing) {
       mailErrorSpan.textContent = REQUIRED_ERROR_MSG;
     } else if (mailInput.validity.typeMismatch) {
       mailErrorSpan.textContent = "Formato de e-mail incorreto";
@@ -74,7 +74,7 @@ function validatePhone() {
   if (phoneInput.validity.valid) {
     phoneErrorSpan.textContent = "";
   } else {
-    if (nameInput.validity.valueMissing) {
+    if (phoneInput.validity.valueMissing) {
       phoneErrorSpan.textContent = REQUIRED_ERROR_MSG;
     } else if (phoneInput.validity.customError) {
       phoneErrorSpan.textContent = PHONE_ERROR_MSG;
